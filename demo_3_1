@@ -1,0 +1,59 @@
+#Kuinka paljon tiedostosta löytyy henkilöitä, joiden sukupuoleksi on ilmoitettu nainen ja
+#äidinkieleksi suomi?
+laskuri1 = 0
+with open("vaestolaskenta_data.csv","r") as tiedosto:
+    for rivi in tiedosto:
+        merkit = rivi.split(",")
+        if merkit[2] == "\"2\"" and merkit[4] == "\"1\"": #tai  if merkit[2][1] == "2" and merkit[4][1] == "1":
+            laskuri1 += 1
+            
+
+print("Henkilöiden lukumäärä, joiden sukupuoli on nainen ja äidinkieli suomi:", laskuri1)
+
+#Kuinka paljon tiedostosta löytyy henkilöitä, joiden perheen koko on vähintään 4 henkilöä?
+laskuri2 = 0
+with open("vaestolaskenta_data.csv","r") as tiedosto:
+    for rivi in tiedosto:
+        merkit = rivi.split(",")
+        if merkit[6] == "4":
+            laskuri2 += 1
+        elif merkit[6] == "5":
+            laskuri2 += 1
+        elif merkit[6] == "6":
+            laskuri2 += 1
+        elif merkit[6] == "7":
+            laskuri2 += 1
+        elif merkit[6] == "8":
+            laskuri2 += 1    
+        elif merkit[6] == "9":
+            laskuri2 += 1   
+        elif merkit[6] == "10":
+            laskuri2 += 1 
+        elif merkit[6] == "11":
+            laskuri2 += 1
+        elif merkit[6] == "12":
+            laskuri2 += 1
+
+print("Perheiden lukumäärä, joissa vähintään 4 henkilöä:", laskuri2)
+
+#Miten tiedostossa olevat henkilöt jakautuvat eri suuralueille (Etelä-Suomi, Länsi-Suomi ja
+#Ahvenamaa, Itä-Suomi ja Pohjois-Suomi)?
+etela = 0
+lansiahven = 0
+ita = 0
+pohjois = 0
+with open("vaestolaskenta_data.csv","r") as tiedosto:
+    for rivi in tiedosto:
+        merkit = rivi.split(",")
+        if merkit[7] == "\"1\"":
+            etela += 1
+        if merkit[7] == "\"2\"":
+            lansiahven += 1
+        if merkit[7] == "\"3\"":
+            ita += 1
+        if merkit[7] == "\"4\"":
+            pohjois += 1
+print("Henkilöitä Etelä-Suomessa:", etela)
+print("Hnekilöitä Länsi-Suomessa ja Ahvenanmaalla:", lansiahven)
+print("Henkilöitä Itä-Suomessa:", ita)
+print("Henkilöitä Pohjois-Suomessa:", pohjois)
